@@ -15,6 +15,7 @@ namespace Irembo.UserManagement.Helpers
         static IWebHostEnvironment _hostingEnvironment;
         static string testEmailTemplate;
         static string plainTextTestEmailTemplate;
+        static string emailConfirmTemplate;
 
 
         public static void Initialize(IWebHostEnvironment hostingEnvironment)
@@ -32,6 +33,18 @@ namespace Irembo.UserManagement.Helpers
             string emailMessage = testEmailTemplate
                 .Replace("{user}", recepientName)
                 .Replace("{testDate}", testDate.ToString());
+
+            return emailMessage;
+        }
+
+        public static string GetEmailConfirm(string callbackUrl)
+        {
+            if (emailConfirmTemplate == null)
+                emailConfirmTemplate = ReadPhysicalFile("Helpers/Templates/EmailConfirm.template");
+
+
+            string emailMessage = emailConfirmTemplate
+                .Replace("{callbackUrl}", callbackUrl);
 
             return emailMessage;
         }

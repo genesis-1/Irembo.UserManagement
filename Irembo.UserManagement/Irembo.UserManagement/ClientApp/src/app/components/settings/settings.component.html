@@ -11,11 +11,6 @@
             <i class="fa fa-user-circle-o fa-fw" aria-hidden="true"></i> {{'settings.tab.Profile' | translate}}
           </a>
         </li>
-        <li class="nav-item">
-          <a id="preferencesTab" [routerLink]="[]" fragment="preferences" data-target="#preferences" href="#preferences" class="nav-link" data-toggle="tab" role="tab" aria-controls="preferences">
-            <i class="fa fa-sliders fa-fw" aria-hidden="true"></i> {{'settings.tab.Preferences' | translate}}
-          </a>
-        </li>
         <li [hidden]="!canViewUsers" class="nav-item">
           <a id="usersTab" [routerLink]="[]" fragment="users" data-target="#users" href="#users" class="nav-link" data-toggle="tab" role="tab" aria-controls="users">
             <i class="fa fa-users fa-fw" aria-hidden="true"></i> {{'settings.tab.Users' | translate}}

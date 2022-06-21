@@ -212,8 +212,8 @@ namespace DAL.Core
 
         public async Task<bool> TestCanDeleteUserAsync(string userId)
         {
-            if (await _context.Orders.Where(o => o.CashierId == userId).AnyAsync())
-                return false;
+            //if (await _context.Orders.Where(o => o.CashierId == userId).AnyAsync())
+            //    return false;
 
             //canDelete = !await ; //Do other tests...
 
@@ -386,6 +386,25 @@ namespace DAL.Core
         {
             var result = await _roleManager.DeleteAsync(role);
             return (result.Succeeded, result.Errors.Select(e => e.Description).ToArray());
+        }
+
+        public async Task<string> GeneratePasswordResetTokenAsync(ApplicationUser user)
+        {
+            var token = await _userManager.GeneratePasswordResetTokenAsync(user);
+            return token;
+
+        }
+
+        public async Task<string> GenerateEmailConfirmationTokenAsync(ApplicationUser user)
+        {
+            var token = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+            return token;
+        }
+
+        public async Task<IList<string>> GetValidTwoFactorProvidersAsync(ApplicationUser user)
+        {
+            var providers = await _userManager.GetValidTwoFactorProvidersAsync(user);
+            return providers;
         }
     }
 }

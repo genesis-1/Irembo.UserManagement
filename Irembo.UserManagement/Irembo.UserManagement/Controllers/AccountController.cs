@@ -14,6 +14,7 @@ using Irembo.UserManagement.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -27,19 +28,21 @@ namespace Irembo.UserManagement.Controllers
     public class AccountController : ControllerBase
     {
         private readonly IMapper _mapper;
+        private readonly IEmailSender _emailSender;
         private readonly IAccountManager _accountManager;
         private readonly IAuthorizationService _authorizationService;
         private readonly ILogger<AccountController> _logger;
         private const string GetUserByIdActionName = "GetUserById";
         private const string GetRoleByIdActionName = "GetRoleById";
 
-        public AccountController(IMapper mapper, IAccountManager accountManager, IAuthorizationService authorizationService,
+        public AccountController(IMapper mapper, IEmailSender emailSender, IAccountManager accountManager, IAuthorizationService authorizationService,
             ILogger<AccountController> logger)
         {
             _mapper = mapper;
             _accountManager = accountManager;
             _authorizationService = authorizationService;
             _logger = logger;
+            _emailSender = emailSender;
         }
 
 
@@ -278,8 +281,29 @@ namespace Irembo.UserManagement.Controllers
                 var result = await _accountManager.CreateUserAsync(appUser, user.Roles, user.NewPassword);
                 if (result.Succeeded)
                 {
-                    UserViewModel userVM = await GetUserViewModelHelper(appUser.Id);
-                    return CreatedAtAction(GetUserByIdActionName, new { id = userVM.Id }, userVM);
+                    var token = await _accountManager.GenerateEmailConfirmationTokenAsync(appUser);
+                    var param = new Dictionary<string, string?>
+                    {
+                        {"token", token },
+                        {"email", user.Email }
+                    };
+                    var callback = QueryHelpers.AddQueryString("http://localhost:4200/authentication/emailconfirmation", param);
+                    string message = EmailTemplates.GetEmailConfirm(callback);
+                    (bool success, string errorMsg) = await _emailSender.SendEmailAsync(user.FullName, user.Email, "Email Confirmation", message);
+
+                    if (success)
+                    {
+                        UserViewModel userVM = await GetUserViewModelHelper(appUser.Id);
+                        return CreatedAtAction(GetUserByIdActionName, new { id = userVM.Id }, userVM);
+                    }
+                    else
+                    {
+                        await DeleteUser(appUser.Id);
+                        AddError(errorMsg);
+                    }
+
+
+                    
                 }
 
                 AddError(result.Errors);

@@ -16,6 +16,9 @@ namespace DAL.Core.Interfaces
     {
 
         Task<bool> CheckPasswordAsync(ApplicationUser user, string password);
+        Task<string> GeneratePasswordResetTokenAsync(ApplicationUser user);
+        Task<string> GenerateEmailConfirmationTokenAsync(ApplicationUser user);
+        Task<IList<string>> GetValidTwoFactorProvidersAsync(ApplicationUser user);
         Task<(bool Succeeded, string[] Errors)> CreateRoleAsync(ApplicationRole role, IEnumerable<string> claims);
         Task<(bool Succeeded, string[] Errors)> CreateUserAsync(ApplicationUser user, IEnumerable<string> roles, string password);
         Task<(bool Succeeded, string[] Errors)> DeleteRoleAsync(ApplicationRole role);

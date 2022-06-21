@@ -1,6 +1,6 @@
 // =============================
 // Email: info@ebenmonney.com
-// www.ebenmonney.com/templates
+
 // =============================
 
 import { NgModule, ErrorHandler } from '@angular/core';
@@ -44,12 +44,8 @@ import { GroupByPipe } from './pipes/group-by.pipe';
 
 import { AppComponent } from './components/app.component';
 import { LoginComponent } from './components/login/login.component';
-import { HomeComponent } from './components/home/home.component';
-import { CustomersComponent } from './components/customers/customers.component';
-import { ProductsComponent } from './components/products/products.component';
-import { OrdersComponent } from './components/orders/orders.component';
+
 import { SettingsComponent } from './components/settings/settings.component';
-import { AboutComponent } from './components/about/about.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 
 import { BannerDemoComponent } from './components/controls/banner-demo.component';
@@ -58,7 +54,6 @@ import { StatisticsDemoComponent } from './components/controls/statistics-demo.c
 import { NotificationsViewerComponent } from './components/controls/notifications-viewer.component';
 import { SearchBoxComponent } from './components/controls/search-box.component';
 import { UserInfoComponent } from './components/controls/user-info.component';
-import { UserPreferencesComponent } from './components/controls/user-preferences.component';
 import { UsersManagementComponent } from './components/controls/users-management.component';
 import { RolesManagementComponent } from './components/controls/roles-management.component';
 import { RoleEditorComponent } from './components/controls/role-editor.component';
@@ -91,14 +86,9 @@ import { RoleEditorComponent } from './components/controls/role-editor.component
   declarations: [
     AppComponent,
     LoginComponent,
-    HomeComponent,
-    CustomersComponent,
-    ProductsComponent,
-    OrdersComponent,
     SettingsComponent,
-    UsersManagementComponent, UserInfoComponent, UserPreferencesComponent,
+    UsersManagementComponent, UserInfoComponent,
     RolesManagementComponent, RoleEditorComponent,
-    AboutComponent,
     NotFoundComponent,
     NotificationsViewerComponent,
     SearchBoxComponent,

@@ -1,6 +1,6 @@
 ﻿<p>Hello {user},</p>
 <p>This is a <strong>TEST</strong> email.</p>
-<p>Please click <a href="{testDate}">Here</a> to confirm your email</p>
+<p>Please click <a href="{callbackUrl}">Here</a> to confirm your email</p>
 <p><br /></p>
 <p>Regards,</p>
 <p>Irembo Template</p>
