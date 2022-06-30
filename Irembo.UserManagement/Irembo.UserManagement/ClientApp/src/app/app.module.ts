@@ -1,5 +1,5 @@
 // =============================
-// Email: info@ebenmonney.com
+
 
 // =============================
 
@@ -57,6 +57,7 @@ import { UserInfoComponent } from './components/controls/user-info.component';
 import { UsersManagementComponent } from './components/controls/users-management.component';
 import { RolesManagementComponent } from './components/controls/roles-management.component';
 import { RoleEditorComponent } from './components/controls/role-editor.component';
+import { UploadComponent } from './components/controls/upload/upload.component';
 
 
 @NgModule({
@@ -98,7 +99,8 @@ import { RoleEditorComponent } from './components/controls/role-editor.component
     AutofocusDirective,
     BootstrapTabDirective,
     BootstrapToggleDirective,
-    GroupByPipe
+    GroupByPipe,
+    UploadComponent
   ],
   providers: [
     { provide: ErrorHandler, useClass: AppErrorHandler },

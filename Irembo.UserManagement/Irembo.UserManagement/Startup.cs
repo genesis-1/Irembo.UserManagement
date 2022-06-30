@@ -1,6 +1,6 @@
 // =============================
-// Email: info@ebenmonney.com
-// www.ebenmonney.com/templates
+
+
 // =============================
 
 using AutoMapper;
@@ -162,7 +162,7 @@ namespace Irembo.UserManagement
 
 
             // Repositories
-            services.AddScoped<IUnitOfWork, HttpUnitOfWork>();
+            //services.AddScoped<IUnitOfWork, HttpUnitOfWork>();
             services.AddScoped<IAccountManager, AccountManager>();
 
             // Auth Handlers

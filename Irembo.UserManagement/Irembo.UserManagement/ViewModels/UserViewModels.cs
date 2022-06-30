@@ -1,8 +1,4 @@
-﻿// =============================
-// Email: info@ebenmonney.com
-// www.ebenmonney.com/templates
-// =============================
-
+﻿
 using FluentValidation;
 using Irembo.UserManagement.Helpers;
 using System;
@@ -68,19 +64,16 @@ namespace Irembo.UserManagement.ViewModels
         public string Configuration { get; set; }
 
         public bool IsEnabled { get; set; }
+
+        public int Age { get; set; }
+        public string Gender { get; set; }
+        public DateTime DateOfBirth { get; set; }
+        public string MaritalStatus { get; set; }
+        public string Nationality { get; set; }
+        public string ProfileImage { get; set; }
+        public string NationanlIDImage { get; set; }
+        public string IdentificationNumber { get; set; }
+        public string AccountStatus { get; set; }
     }
 
-
-
-
-    //public class UserViewModelValidator : AbstractValidator<UserViewModel>
-    //{
-    //    public UserViewModelValidator()
-    //    {
-    //        //Validation logic here
-    //        RuleFor(user => user.UserName).NotEmpty().WithMessage("Username cannot be empty");
-    //        RuleFor(user => user.Email).EmailAddress().NotEmpty();
-    //        RuleFor(user => user.Password).NotEmpty().WithMessage("Password cannot be empty").Length(4, 20);
-    //    }
-    //}
 }

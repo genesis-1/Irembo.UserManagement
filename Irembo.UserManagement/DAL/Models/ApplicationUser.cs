@@ -1,6 +1,6 @@
 ﻿// =============================
-// Email: info@ebenmonney.com
-// www.ebenmonney.com/templates
+
+
 // =============================
 
 using DAL.Models.Interfaces;
@@ -39,6 +39,18 @@ namespace DAL.Models
         public string UpdatedBy { get; set; }
         public DateTime CreatedDate { get; set; }
         public DateTime UpdatedDate { get; set; }
+
+        public int Age { get; set; }
+        public string Gender { get; set; }
+        public DateTime DateOfBirth { get; set; }
+        public string  MaritalStatus { get; set; }
+        public string  Nationality { get; set; }
+        public string ProfileImage { get; set; }
+        public string NationanlIDImage { get; set; }
+
+        public string IdentificationNumber { get; set; }
+
+        public string AccountStatus { get; set; }
 
 
 

@@ -18,6 +18,50 @@
 
           (canAssignRoles && !roles.valid && showErrorAlert('Roles is required', 'Please select a minimum of 1 role'));">
 
+    
+          <!-- <div class="form-group row">
+           
+            <div *ngIf="!isEditMode" [class.col-lg-9]="isViewOnly" [class.col-lg-10]="!isViewOnly">
+             
+              <img [src]="createImgPath(user.ProfileImage)" alt="profile picture" style="width:60px; height:60px;">
+            </div>
+            <div *ngIf="isEditMode" [class.col-lg-9]="isViewOnly" [class.col-lg-10]="!isViewOnly">
+              <input appAutofocus type="text" attr.id="ProfileImage-{{uniqueId}}" name="ProfileImage" placeholder="Enter Job Title" class="form-control" [(ngModel)]="userEdit.ProfileImage" />
+            </div>
+          </div> -->
+
+          <div class="form-group row">
+            <label [class.col-lg-3]="isViewOnly" [class.col-lg-2]="!isViewOnly" class="col-form-label" for="age-{{uniqueId}}">Age</label>
+            <div *ngIf="!isEditMode" [class.col-lg-9]="isViewOnly" [class.col-lg-10]="!isViewOnly">
+              <p class="form-control-plaintext">{{user.age}}</p>
+            </div>
+            <div *ngIf="isEditMode" [class.col-lg-9]="isViewOnly" [class.col-lg-10]="!isViewOnly">
+              <input appAutofocus type="text" attr.id="age-{{uniqueId}}" name="age" placeholder="Enter age" class="form-control" [(ngModel)]="userEdit.age" />
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label [class.col-lg-3]="isViewOnly" [class.col-lg-2]="!isViewOnly" class="col-form-label" for="gender-{{uniqueId}}">Gender</label>
+            <div *ngIf="!isEditMode" [class.col-lg-9]="isViewOnly" [class.col-lg-10]="!isViewOnly">
+              <p class="form-control-plaintext">{{user.gender}}</p>
+            </div>
+            <div *ngIf="isEditMode" [class.col-lg-9]="isViewOnly" [class.col-lg-10]="!isViewOnly">
+              <input appAutofocus type="text" attr.id="gender-{{uniqueId}}" name="gender" placeholder="Enter Gender" class="form-control" [(ngModel)]="userEdit.gender" />
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label [class.col-lg-3]="isViewOnly" [class.col-lg-2]="!isViewOnly" class="col-form-label" for="DateOfBirth-{{uniqueId}}">Date Of birth</label>
+            <div *ngIf="!isEditMode" [class.col-lg-9]="isViewOnly" [class.col-lg-10]="!isViewOnly">
+              <p class="form-control-plaintext">{{user.DateOfBirth}}</p>
+            </div>
+            <div *ngIf="isEditMode" [class.col-lg-9]="isViewOnly" [class.col-lg-10]="!isViewOnly">
+              <input appAutofocus type="date" attr.id="DateOfBirth-{{uniqueId}}" name="DateOfBirth" placeholder="Enter DateOfBirth" class="form-control" [(ngModel)]="userEdit.DateOfBirth" />
+            </div>
+          </div>
+
+
+
     <div class="form-group row">
       <label [class.col-lg-3]="isViewOnly" [class.col-lg-2]="!isViewOnly" class="col-form-label" for="jobTitle-{{uniqueId}}">{{'users.editor.JobTitle' | translate}}</label>
       <div *ngIf="!isEditMode" [class.col-lg-9]="isViewOnly" [class.col-lg-10]="!isViewOnly">
@@ -27,6 +71,16 @@
         <input appAutofocus type="text" attr.id="jobTitle-{{uniqueId}}" name="jobTitle" placeholder="Enter Job Title" class="form-control" [(ngModel)]="userEdit.jobTitle" />
       </div>
     </div>
+
+    <!-- <div class="form-group row">
+      <label [class.col-lg-3]="isViewOnly" [class.col-lg-2]="!isViewOnly" class="col-form-label" for="ProfileImage-{{uniqueId}}">Upload ProfileImage</label>
+      <div *ngIf="!isEditMode" [class.col-lg-9]="isViewOnly" [class.col-lg-10]="!isViewOnly">
+        <input appAutofocus type="text" attr.id="ProfileImage-{{uniqueId}}" name="ProfileImage" placeholder="Enter Job Title" class="form-control" [(ngModel)]="userEdit.ProfileImage" />
+        <app-upload (uploaded)="bioSection.patchValue({'ProfileImage': $event})"></app-upload>
+      </div>
+    </div> -->
+
+
 
     <div class="row">
       <div class="col-lg-12">
